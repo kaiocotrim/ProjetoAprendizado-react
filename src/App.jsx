@@ -2,6 +2,7 @@ import { useState } from "react";
 import Tasks from "./components/Task";
 import AddTask from "./components/addTask";
 
+
 function App() {
   const [tasksPlus, setTasks] = useState([
     {
@@ -24,6 +25,17 @@ function App() {
     },
   ]);
 
+function onAddSubmitTask(title, description) {
+  // Lógica para adicionar uma nova tarefa
+  const newTask = {
+    id: tasksPlus.length + 1,
+    title,
+    description,
+    completed: false,
+  };
+  setTasks([...tasksPlus, newTask]);
+}
+
 function onTaskClick(taskId) {
   const neewTasks = tasksPlus.map((task) => {
     if (task.id === taskId) { 
@@ -41,12 +53,12 @@ function onTaskDelete(taskid) {
 }
 
   return (
-    <div className="w-screen h-screen bg-slate-500 flex justify-center p-6">
-      <div className="w-125">
+    <div className="w-screen h-screen bg-slate-500 flex justify-center p-6 ">
+      <div className="w-125 space-y-4">
         <h1 className="text-3xl text-slate-100 font-bold text-center ">
           Gerenciador de Tarefas
         </h1>
-        <AddTask/>
+        <AddTask onAddSubmitTask={onAddSubmitTask} />
         <Tasks tasks={tasksPlus} onTaskClick={onTaskClick} onTaskDelete={onTaskDelete} />
       </div>
     </div>
