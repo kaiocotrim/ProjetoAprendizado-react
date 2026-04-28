@@ -6,19 +6,19 @@ function App() {
   const [tasksPlus, setTasks] = useState([
     {
       id: 1,
-      title: "Tarefa 1",
+      title: "Aprender react",
       description: "Descrição da tarefa 1",
       completed: false,
     },
     {
       id: 2,
-      title: "Tarefa 2",
+      title: "Aprender git",
       description: "Descrição da tarefa 2",
       completed: false,
     },
     {
       id: 3,
-      title: "Tarefa 3",
+      title: "Aprender express",
       description: "Descrição da tarefa 3",
       completed: false,
     },
@@ -26,13 +26,18 @@ function App() {
 
 function onTaskClick(taskId) {
   const neewTasks = tasksPlus.map((task) => {
-    if (task.id === taskId) {
+    if (task.id === taskId) { 
       return { ...task, completed: !task.completed };
     }
     return task;
   });  // <-- faltava o ) aqui para fechar o .map()
 
   setTasks(neewTasks);
+}
+
+function onTaskDelete(taskid) {
+  const newTasks = tasksPlus.filter((task) => task.id !== taskid);
+  setTasks(newTasks);
 }
 
   return (
@@ -42,7 +47,7 @@ function onTaskClick(taskId) {
           Gerenciador de Tarefas
         </h1>
         <AddTask/>
-        <Tasks tasks={tasksPlus} />
+        <Tasks tasks={tasksPlus} onTaskClick={onTaskClick} onTaskDelete={onTaskDelete} />
       </div>
     </div>
   );
