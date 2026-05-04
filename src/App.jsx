@@ -1,34 +1,35 @@
 import { useState } from "react";
 import Tasks from "./components/Task";
 import AddTask from "./components/addTask";
-
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [tasksPlus, setTasks] = useState([
     {
-      id: 1,
+      id: uuidv4(),
       title: "Aprender react",
       description: "Descrição da tarefa 1",
       completed: false,
     },
     {
-      id: 2,
+      id: uuidv4(),
       title: "Aprender git",
       description: "Descrição da tarefa 2",
       completed: false,
     },
     {
-      id: 3,
+      id: uuidv4(),
       title: "Aprender express",
       description: "Descrição da tarefa 3",
       completed: false,
     },
   ]);
 
+
 function onAddSubmitTask(title, description) {
   // Lógica para adicionar uma nova tarefa
   const newTask = {
-    id: tasksPlus.length + 1,
+    id: uuidv4(),
     title,
     description,
     completed: false,

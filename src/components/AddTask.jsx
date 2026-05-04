@@ -21,9 +21,17 @@ function AddTask({ onAddSubmitTask }) {
         onChange={(event) => setDescription(event.target.value)}
       />
       <button
-        className="bg-slate-500 text-white p-2 rounded-md w-full"
-        onClick={() => onAddSubmitTask(title, description)}
+        className="bg-slate-500 text-white p-2 rounded-md w-full cursor-pointer"
+        onClick={() => {
+          if (!title.trim() || !description.trim()) {
+            return alert("Por favor, preencha o título e a descrição da tarefa.");
+          }
+          setTitle("");
+          setDescription("");
+          onAddSubmitTask(title, description);
+        }}
       >
+
         Adicionar
       </button>
     </div>
