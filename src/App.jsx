@@ -1,29 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Tasks from "./components/Task";
 import AddTask from "./components/addTask";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  const [tasksPlus, setTasks] = useState([
-    {
-      id: uuidv4(),
-      title: "Aprender react",
-      description: "Descrição da tarefa 1",
-      completed: false,
-    },
-    {
-      id: uuidv4(),
-      title: "Aprender git",
-      description: "Descrição da tarefa 2",
-      completed: false,
-    },
-    {
-      id: uuidv4(),
-      title: "Aprender express",
-      description: "Descrição da tarefa 3",
-      completed: false,
-    },
-  ]);
+  
+  const [tasksPlus, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasksPlus") || "[]")
+  );
+
+useEffect(() => {
+  localStorage.setItem("tasksPlus", JSON.stringify(tasksPlus));
+},[tasksPlus]);
 
 
 function onAddSubmitTask(title, description) {
