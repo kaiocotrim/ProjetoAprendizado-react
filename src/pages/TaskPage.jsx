@@ -1,6 +1,7 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { ChevronsLeft } from "lucide-react";
 
+
 function TaskPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -9,6 +10,7 @@ function TaskPage() {
   return (
     <div className="h-screen w-screen bg-slate-500 p-7 ">
       {/* Aqui você pode adicionar o componente de tarefas */}
+   
 
       <div className="flex items-center p-4">
         <button
@@ -28,7 +30,9 @@ function TaskPage() {
           <p className="text-slate-500 text-2xl">{description}</p>
         </div>
       </div>
+       
     </div>
+
   );
 }
 
