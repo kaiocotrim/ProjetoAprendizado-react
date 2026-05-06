@@ -38,7 +38,7 @@ function Tasks({ tasks, onTaskClick, onTaskDelete }) {
           >
             <Trash />
           </button>
-        </li>
+        </li>       
       ))}
     </ul>
   );

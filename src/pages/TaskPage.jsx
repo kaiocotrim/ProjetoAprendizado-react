@@ -1,6 +1,6 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { ChevronsLeft } from "lucide-react";
-
+import Button from "../components/button";
 
 function TaskPage() {
   const navigate = useNavigate();
@@ -9,17 +9,13 @@ function TaskPage() {
   const description = searchParams.get("description");
   return (
     <div className="h-screen w-screen bg-slate-500 p-7 ">
-      {/* Aqui você pode adicionar o componente de tarefas */}
-   
-
-      <div className="flex items-center p-4">
-        <button
-          className="text-slate-100 p-2 rounded-md  cursor-pointer"
-          onClick={() => navigate(-1)}
-        >
-          <ChevronsLeft />
-        </button>
-        <h1 className="flex-1 text-3xl text-slate-100 font-bold text-center">
+      <div className="relative flex items-center justify-center p-4">
+        <div className="absolute left-4">
+          <Button onClick={() => navigate(-1)}>
+            <ChevronsLeft />
+          </Button>
+        </div>
+        <h1 className="text-3xl text-slate-100 font-bold text-center">
           Informação da Tarefa
         </h1>
       </div>
@@ -30,9 +26,7 @@ function TaskPage() {
           <p className="text-slate-500 text-2xl">{description}</p>
         </div>
       </div>
-       
     </div>
-
   );
 }
 
